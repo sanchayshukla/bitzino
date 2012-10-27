@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='black' name='apple-mobile-web-app-status-bar-style'>
+<link content='image/vnd.microsoft.icon' href='/favicon.ico' rel='shortcut icon'>
+<link href='/assets/icon-114x114.png' rel='apple-touch-icon-precomposed'>
+<title>bitZino - Bitcoin Casino</title>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="8kvxWs6hcHrnheA94cf/FhVNm+JtD+rP2EI02qFAktA=" name="csrf-token" />
+<link href="/assets/application-23a9132c962c64b00706360a981817c1.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id='body'>
+<div class='flash' id='flash_notice'>
+You must be logged in to access that page
+</div>
+<div id='header'>
+<a href="/" class="logo"><img alt="bitZino" src="/assets/bitzino-e4c71901088009f1710770b8c3dd0b88.png" />
+</a><div class='tagline'>bitcoin casino</div>
+<form accept-charset="UTF-8" action="/user_session" class="new_user_session" id="new_user_session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8kvxWs6hcHrnheA94cf/FhVNm+JtD+rP2EI02qFAktA=" /></div>
+<input id="user_session_source" name="user_session[source]" type="hidden" value="/user/new" />
+<input id="user_session_username" name="user_session[username]" placeholder="username" size="30" type="text" />
+<input id="user_session_password" name="user_session[password]" placeholder="password" size="30" type="password" />
+<input class="black" name="commit" type="submit" value="Login" />
+<a href="/register">Register
+</a></form>
+</div>
+
+<div class='content'>
+<div class='inner_content'>
+<div class='new'>
+<div class='background'></div>
+<h1>Register</h1>
+<p>
+Registering for bitZino is easy and free.
+</p>
+<p>
+Before registering, you must agree to the
+<a href="/tos">Terms of Service</a>.
+</p>
+<form accept-charset="UTF-8" action="/user" class="new_user" id="new_user_b01045c2da67427bbd8632d0ec45cb0c" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8kvxWs6hcHrnheA94cf/FhVNm+JtD+rP2EI02qFAktA=" /></div>
+<div class='field'>
+<label for="user_username">Username</label>
+<input id="user_username" name="user[username]" size="30" type="text" />
+
+</div>
+<div class='field'>
+<label for="user_email">Email (optional)</label>
+<input id="user_email" name="user[email]" size="30" type="text" />
+
+</div>
+<div class='field'>
+<label for="user_password">Password</label>
+<input id="user_password" name="user[password]" size="30" type="password" />
+
+</div>
+<div class='field'>
+<label for="user_password_confirmation">Password confirmation</label>
+<input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" />
+
+</div>
+<div class='field'>
+<input class="black" name="commit" type="submit" value="Register" />
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div id='qrmask'></div>
+<div id='qrholder'>
+<div class='loading'>Loading qr code...</div>
+</div>
+<div id='footer'>
+<a href="/support">Support</a>
+|
+<a href="/withdrawals">Withdraw</a>
+|
+<a href="/deposits">Deposit</a>
+</div>
+</div>
+<script src="/assets/application-24beca728fca1f867e72fa74045e3228.js" type="text/javascript"></script>
+
+</body>
+</html>

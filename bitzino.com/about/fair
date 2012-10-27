@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='black' name='apple-mobile-web-app-status-bar-style'>
+<link content='image/vnd.microsoft.icon' href='/favicon.ico' rel='shortcut icon'>
+<link href='/assets/icon-114x114.png' rel='apple-touch-icon-precomposed'>
+<title>Provably Fair :: bitZino - Bitcoin Casino</title>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="8kvxWs6hcHrnheA94cf/FhVNm+JtD+rP2EI02qFAktA=" name="csrf-token" />
+<link href="/assets/application-23a9132c962c64b00706360a981817c1.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id='body'>
+<div id='header'>
+<a href="/" class="logo"><img alt="bitZino" src="/assets/bitzino-e4c71901088009f1710770b8c3dd0b88.png" />
+</a><div class='tagline'>bitcoin casino</div>
+<form accept-charset="UTF-8" action="/user_session" class="new_user_session" id="new_user_session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8kvxWs6hcHrnheA94cf/FhVNm+JtD+rP2EI02qFAktA=" /></div>
+<input id="user_session_source" name="user_session[source]" type="hidden" value="/about/fair" />
+<input id="user_session_username" name="user_session[username]" placeholder="username" size="30" type="text" />
+<input id="user_session_password" name="user_session[password]" placeholder="password" size="30" type="password" />
+<input class="black" name="commit" type="submit" value="Login" />
+<a href="/register">Register
+</a></form>
+</div>
+
+<div class='text fair'>
+<div class='inner_content'>
+<h1>
+bitZino is Provably Fair
+<img alt="" src="/assets/lock-30-ee79fdadde0693451acb6f78411a4691.png" />
+</h1>
+<p>
+Every gamble you make on bitZino is immediately independently verifiable by you.
+</p>
+<h2>Verify now</h2>
+<p></p>
+<div id='calculator'>
+<p>
+Use this javascript hand verifier to prove the fairness of any hand you play on bitZino.
+Just copy the values from any hand into this form and click "Verify".
+</p>
+<div class='hand'>
+<h5>Verify hand</h5>
+<div class='field'>
+<label>Client seed</label>
+<div class='long_string editable'>
+<div class='space'></div>
+<input id='client_seed' type='text' />
+<div class='fade'></div>
+</div>
+</div>
+<div class='field'>
+<label>Hash(secret)</label>
+<div class='long_string editable'>
+<div class='space'></div>
+<input id='hash_secret' type='text' />
+<div class='fade'></div>
+</div>
+</div>
+<div class='field'>
+<label>Secret</label>
+<div class='long_string editable'>
+<div class='space'></div>
+<input id='secret' type='text' />
+<div class='fade'></div>
+</div>
+</div>
+<div class='field'>
+<label>Final shuffle</label>
+<div class='long_string editable'>
+<div class='space'></div>
+<input id='final_shuffle' type='text' />
+<div class='fade'></div>
+</div>
+</div>
+<input class='black' id='calculator_verify' type='submit' value='Verify'>
+<div class='autofill hidden'>
+Values were auto-filled via the link you visited from.
+</div>
+</div>
+<div class='list'>
+<div class='lock'></div>
+<div class='item secret_format hidden'>
+<div class='check'>✓</div>
+<code>Secret</code>
+properly formatted
+</div>
+<div class='item hash_secret hidden'>
+<div class='check'>✓</div>
+<code>Hash(secret)</code>
+verified
+</div>
+<div class='item final_shuffle hidden'>
+<div class='check'>✓</div>
+<code>Final shuffle</code>
+derived from Mersenne Twist of
+<code>initial shuffle</code>
+</div>
+<div class='verified hidden'>
+✓ Verified
+</div>
+<div class='not_verified hidden'>
+Not verified!
+</div>
+</div>
+</div>
+<h2>How does it all work?</h2>
+<p>We utilize a novel cryptographic approach which ensures that neither you nor us can possibly know the shuffle of a deck until the moment it is dealt. To verify any hand, click on the <img alt="Provably Fair" src="/assets/provably-fair-link-cf66df9895c333ac186dac5d320b0872.png" /> link below any table, and copy the values into the form above.</p>
+
+<p>Want all the nitty-gritty details of how we do this? Keep on reading!</p>
+
+<h3>Before every hand</h3>
+
+<div class='card_table right'>
+<h5>Card encodings</h5>
+<div class='table'>
+<table>
+<tr>
+<td>0</td>
+<td>Ac</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2c</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3c</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4c</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5c</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6c</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7c</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8c</td>
+</tr>
+<tr>
+<td>8</td>
+<td>9c</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10c</td>
+</tr>
+<tr>
+<td>a</td>
+<td>Jc</td>
+</tr>
+<tr>
+<td>b</td>
+<td>Qc</td>
+</tr>
+<tr>
+<td>c</td>
+<td>Kc</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Ad</td>
+</tr>
+<tr>
+<td>e</td>
+<td>2d</td>
+</tr>
+<tr>
+<td>f</td>
+<td>3d</td>
+</tr>
+<tr>
+<td>g</td>
+<td>4d</td>
+</tr>
+<tr>
+<td>h</td>
+<td>5d</td>
+</tr>
+<tr>
+<td>i</td>
+<td>6d</td>
+</tr>
+<tr>
+<td>j</td>
+<td>7d</td>
+</tr>
+<tr>
+<td>k</td>
+<td>8d</td>
+</tr>
+<tr>
+<td>l</td>
+<td>9d</td>
+</tr>
+<tr>
+<td>m</td>
+<td>10d</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Jd</td>
+</tr>
+<tr>
+<td>o</td>
+<td>Qd</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Kd</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Ah</td>
+</tr>
+<tr>
+<td>r</td>
+<td>2h</td>
+</tr>
+<tr>
+<td>s</td>
+<td>3h</td>
+</tr>
+<tr>
+<td>t</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>u</td>
+<td>5h</td>
+</tr>
+<tr>
+<td>v</td>
+<td>6h</td>
+</tr>
+<tr>
+<td>w</td>
+<td>7h</td>
+</tr>
+<tr>
+<td>x</td>
+<td>8h</td>
+</tr>
+<tr>
+<td>y</td>
+<td>9h</td>
+</tr>
+<tr>
+<td>z</td>
+<td>10h</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Jh</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Qh</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Kh</td>
+</tr>
+<tr>
+<td>D</td>
+<td>As</td>
+</tr>
+<tr>
+<td>E</td>
+<td>2s</td>
+</tr>
+<tr>
+<td>F</td>
+<td>3s</td>
+</tr>
+<tr>
+<td>G</td>
+<td>4s</td>
+</tr>
+<tr>
+<td>H</td>
+<td>5s</td>
+</tr>
+<tr>
+<td>I</td>
+<td>6s</td>
+</tr>
+<tr>
+<td>J</td>
+<td>7s</td>
+</tr>
+<tr>
+<td>K</td>
+<td>8s</td>
+</tr>
+<tr>
+<td>L</td>
+<td>9s</td>
+</tr>
+<tr>
+<td>M</td>
+<td>10s</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Js</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Qs</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Ks</td>
+</tr>
+</table>
+</div>
+</div>
+<p>Our servers create a new deck and shuffle it utilizing a hardware random number generator. We call this deck the <code>initial_shuffle</code>. See the table to the right to see what card each character in the <code>initial_shuffle</code> represents. Most casinos proceed to deal to you at this point, but for us this is just the beginning of our shuffle process.</p>
+
+<p>Our servers also generate a random string, called the <code>server_seed</code>. We combine the <code>initial_shuffle</code> and the <code>server_seed</code> strings into a single JSON encoded string. We call this JSON string the <code>secret</code>.</p>
+
+<p>Finally, we hash the <code>secret</code> using the <code>SHA256</code> one-way hashing algorithm. This is called the <code>Hash(secret)</code>. We show you this value to you before the hand starts, so you can independently verify that we didn't manipulate the  <code>server_seed</code> or the <code>initial_shuffle</code>.</p>
+
+<p>Now, in order to truly be fair, we need to do something like letting you cut the deck.</p>
+
+<h3>We don't just let you cut the deck, we let you Mersenne Twist it</h3>
+
+<p><img alt="Next hand window" class="left" src="/assets/provably-fair-next-hand-f32482901989d3d908d2867efd1f24d9.png" />
+Before every hand, the javascript in your browser generates a random string called the <code>client_seed</code>. For the most security, we recommend using a browser that supports <a href="https://developer.mozilla.org/en/DOM/window.crypto.getRandomValues#AutoCompatibilityTable">crypto.getRandomValues()</a>, so your browser can generate a cryptographically secure string. If you'd like, you can modify this string to anything you want (up to 32 characters). If you're superstitious, this is a great place to put something lucky, because whatever you put here has a direct impact on the final shuffle of the deck.</p>
+
+<p>When you hit the Bet button, your browser sends the <code>client_seed</code> to our servers. Our servers then hash the combination of the <code>server_seed</code> and the <code>client_seed</code> (using <code>SHA256</code> again). We use this hash to seed the <a href="https://en.wikipedia.org/wiki/Mersenne_twister">Mersenne Twister</a> pseudorandom number generator. We then fully <strong>reshuffle</strong> the deck using this random number generator. Since the random number generator was seeded using a number that only you knew before the deal, there is no possible way for us to know the outcome of this shuffle.</p>
+
+<p><em>Finally</em>, we deal the cards to you. You are guaranteed a provably fair game.</p>
+
+<h3>What about non-card games?</h3>
+
+<div class='card_table right'>
+<h5>Dice encodings</h5>
+<div class='table'>
+<table>
+<tr>
+<td>0</td>
+<td>1, 1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1, 2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1, 3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1, 4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1, 5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1, 6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2, 1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2, 2</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2, 3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2, 4</td>
+</tr>
+<tr>
+<td>a</td>
+<td>2, 5</td>
+</tr>
+<tr>
+<td>b</td>
+<td>2, 6</td>
+</tr>
+<tr>
+<td>c</td>
+<td>3, 1</td>
+</tr>
+<tr>
+<td>d</td>
+<td>3, 2</td>
+</tr>
+<tr>
+<td>e</td>
+<td>3, 3</td>
+</tr>
+<tr>
+<td>f</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td>g</td>
+<td>3, 5</td>
+</tr>
+<tr>
+<td>h</td>
+<td>3, 6</td>
+</tr>
+<tr>
+<td>i</td>
+<td>4, 1</td>
+</tr>
+<tr>
+<td>j</td>
+<td>4, 2</td>
+</tr>
+<tr>
+<td>k</td>
+<td>4, 3</td>
+</tr>
+<tr>
+<td>l</td>
+<td>4, 4</td>
+</tr>
+<tr>
+<td>m</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td>n</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td>o</td>
+<td>5, 1</td>
+</tr>
+<tr>
+<td>p</td>
+<td>5, 2</td>
+</tr>
+<tr>
+<td>q</td>
+<td>5, 3</td>
+</tr>
+<tr>
+<td>r</td>
+<td>5, 4</td>
+</tr>
+<tr>
+<td>s</td>
+<td>5, 5</td>
+</tr>
+<tr>
+<td>t</td>
+<td>5, 6</td>
+</tr>
+<tr>
+<td>u</td>
+<td>6, 1</td>
+</tr>
+<tr>
+<td>v</td>
+<td>6, 2</td>
+</tr>
+<tr>
+<td>w</td>
+<td>6, 3</td>
+</tr>
+<tr>
+<td>x</td>
+<td>6, 4</td>
+</tr>
+<tr>
+<td>y</td>
+<td>6, 5</td>
+</tr>
+<tr>
+<td>z</td>
+<td>6, 6</td>
+</tr>
+</table>
+</div>
+</div>
+<p>We use this same approach for our Roulette and Craps games, we simply use a different deck of cards. A Roulette "deck" contains only 37 cards (0-36 inclusive). Each card in the Roulette deck represents an outcome of a spin of the wheel. A Craps "deck" contains 36 cards, each card representing a distinct outcome of a roll of a pair of dice.</p>
+
+<p>After fully shuffling using the above process, we simply use the top card for the outcome of the Roulette wheel spin or the Craps dice roll.</p>
+
+<h3>Want to know even more details?</h3>
+
+<p>We have implemented a javascript hand verifier, which is embedded in this page. It's written in less than 100 lines of clean, unobfuscated, well-commented javascript. Check it out, and see for yourself!</p>
+
+<p>Our <a href="https://techblog.bitzino.com/2012-06-30-provably-fair-shuffling-through-cryptography.html">tech blog</a> has an even more in-depth description of this approach to Provably Fair Shuffling.</p>
+
+</div>
+</div>
+
+<div id='qrmask'></div>
+<div id='qrholder'>
+<div class='loading'>Loading qr code...</div>
+</div>
+<div id='footer'>
+<a href="/support">Support</a>
+|
+<a href="/withdrawals">Withdraw</a>
+|
+<a href="/deposits">Deposit</a>
+</div>
+</div>
+<script src="/assets/application-24beca728fca1f867e72fa74045e3228.js" type="text/javascript"></script>
+<script src="/static/MersenneTwister19937.js" type="text/javascript"></script>
+<script src="/static/sha256.js" type="text/javascript"></script>
+
+<script charset='utf-8' type='text/javascript'>
+//<![CDATA[
+$(function() {
+  ProvablyFair.setup();
+});
+
+var ProvablyFair = function() { return {
+  animationTime: 300,
+
+  verify: function(client_seed, hash_secret, secret, final_shuffle) {
+    var verifications = {};
+
+    // Verify the format of `secret`.
+    try { var secretJson  = $.parseJSON(secret) } catch(e) {};
+    secretJson = secretJson || {}
+    if (secretJson.server_seed && secretJson.initial_shuffle) {
+      verifications.secret_format = true;
+    }
+
+    // Verify that the SHA256 hash of `secret` matches the value the user saw.
+    if (CryptoJS.SHA256(secret) == hash_secret) {
+      verifications.hash_secret = true;
+    }
+
+    // Hash `client_seed` and `server_seed`.
+    var seedString = CryptoJS.SHA256(client_seed + secretJson.server_seed).toString();
+
+    // Take the bottom 32 bits of the hash to use as the seed for the RNG.
+    var seed = parseInt(seedString.substring(seedString.length - 8), 16);
+    var mt = new MersenneTwister19937();
+    mt.init_genrand(seed);
+
+    // Verify that the reshuffled deck matches `final_shuffle`.
+    if(ProvablyFair.shuffle(String(secretJson.initial_shuffle), mt) == final_shuffle) {
+      verifications.final_shuffle = true;
+    }
+
+    // We now have 3 booleans stored in the `verifications` hash.
+    // If all of these are true, then we have a fully verified shuffle.
+    // Send the `verifications` hash to the animate method so the
+    // results can be displayed to the user.
+    ProvablyFair.animate(verifications);
+  },
+
+  // Shuffles a string using the Fisher-Yates shuffle algorithm.
+  shuffle: function(deck_string, mt) {
+    var tmp, new_deck = deck_string.split('');
+    for(var i = new_deck.length - 1; i > 0; i--) {
+      r = mt.genrand_int32() % (i + 1);
+      tmp = new_deck[r];
+      new_deck[r] = new_deck[i];
+      new_deck[i] = tmp;
+    }
+    return new_deck.join('');
+  },
+
+  animate: function(verifications) {
+    $('.list .item,.list .verified, .list .not_verified').hide();
+    $('.list .lock').addClass('background', this.animationTime);
+    $('.list .item').removeClass('failed');
+    if (!verifications.secret_format) {
+      $('.list .secret_format').addClass('failed');
+    }
+    if (!verifications.hash_secret) {
+      $('.list .hash_secret').addClass('failed');
+    }
+    if (!verifications.final_shuffle) {
+      $('.list .final_shuffle').addClass('failed');
+    }
+
+    $('.list .secret_format').delay(this.animationTime).fadeIn();
+    $('.list .hash_secret').delay(this.animationTime * 2).fadeIn();
+    $('.list .final_shuffle').delay(this.animationTime * 3).fadeIn();
+    if (verifications.secret_format && verifications.hash_secret && verifications.final_shuffle) {
+      $('.list .verified').delay(this.animationTime * 4).fadeIn();
+    } else {
+      $('.list .not_verified').delay(this.animationTime * 4).fadeIn();
+    }
+
+  },
+
+  setup: function() {
+    $('#calculator input[type=text]').each(function() {
+      if ($(this).val() != '') {
+        $('#calculator .autofill').show();
+        return false;
+      }
+    });
+    $('#calculator input').change(function() {
+      $('#calculator .autofill').hide();
+      $('.list .item,.list .verified, .list .not_verified').hide();
+      $('.list .lock').removeClass('background', this.animationTime);
+    });
+    $("#calculator_verify").click(function() {
+      ProvablyFair.verify($('#client_seed').val(), $('#hash_secret').val(), $('#secret').val(), $('#final_shuffle').val());
+    });
+  }
+}}();
+
+
+//]]>
+</script>
+</body>
+</html>
